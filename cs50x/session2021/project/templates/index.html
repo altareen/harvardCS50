@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Course Listings
+{% endblock %}
+
+{% block main %}
+    <h1>Registered Courses</h1>
+    
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Student</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Section 1</th>
+            <th scope="col">Section 2</th>
+            <th scope="col">Section 3</th>
+            <th scope="col">Section 4</th>
+            <th scope="col">Section 5</th>
+            <th scope="col">Section 6</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ rows.first_name }} {{ rows.last_name }}</td>
+                <td>{{ rows.grade_level }}</td>
+                {% if registrations.one == None %}
+                    <td>[Empty]</td>
+                {% else %}
+                    <td>{{ registrations.one }}</td>
+                {% endif %}
+                {% if registrations.two == None %}
+                    <td>[Empty]</td>
+                {% else %}
+                    <td>{{ registrations.two }}</td>
+                {% endif %}
+                {% if registrations.three == None %}
+                    <td>[Empty]</td>
+                {% else %}
+                    <td>{{ registrations.three }}</td>
+                {% endif %}
+                {% if registrations.four == None %}
+                    <td>[Empty]</td>
+                {% else %}
+                    <td>{{ registrations.four }}</td>
+                {% endif %}
+                {% if registrations.five == None %}
+                    <td>[Empty]</td>
+                {% else %}
+                    <td>{{ registrations.five }}</td>
+                {% endif %}
+                {% if registrations.six == None %}
+                    <td>[Empty]</td>
+                {% else %}
+                    <td>{{ registrations.six }}</td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>Course Listings</h1>
+    
+    <h2>Mathematics</h2>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Course</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Enrollment/Capacity</th>
+            <th scope="col">Section</th>
+            <th scope="col">Department</th>
+        </thead>
+        <tbody>
+            {% for course in mathematics %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.first_name }} {{ course.last_name }}</td>
+                    <td>{{ course.enrollment }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Science</h2>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Course</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Enrollment/Capacity</th>
+            <th scope="col">Section</th>
+            <th scope="col">Department</th>
+        </thead>
+        <tbody>
+            {% for course in science %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.first_name }} {{ course.last_name }}</td>
+                    <td>{{ course.enrollment }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Humanities</h2>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Course</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Enrollment/Capacity</th>
+            <th scope="col">Section</th>
+            <th scope="col">Department</th>
+        </thead>
+        <tbody>
+            {% for course in humanities %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.first_name }} {{ course.last_name }}</td>
+                    <td>{{ course.enrollment }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Languages</h2>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Course</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Enrollment/Capacity</th>
+            <th scope="col">Section</th>
+            <th scope="col">Department</th>
+        </thead>
+        <tbody>
+            {% for course in languages %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.first_name }} {{ course.last_name }}</td>
+                    <td>{{ course.enrollment }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>English</h2>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Course</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Enrollment/Capacity</th>
+            <th scope="col">Section</th>
+            <th scope="col">Department</th>
+        </thead>
+        <tbody>
+            {% for course in english %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.first_name }} {{ course.last_name }}</td>
+                    <td>{{ course.enrollment }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Art</h2>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Course</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Enrollment/Capacity</th>
+            <th scope="col">Section</th>
+            <th scope="col">Department</th>
+        </thead>
+        <tbody>
+            {% for course in art %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.first_name }} {{ course.last_name }}</td>
+                    <td>{{ course.enrollment }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

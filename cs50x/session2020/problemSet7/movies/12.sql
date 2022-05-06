@@ -1,0 +1,1 @@
+SELECT A.title FROM (SELECT * FROM ((stars INNER JOIN movies ON stars.movie_id = movies.id) INNER JOIN people ON stars.person_id = people.id) WHERE people.name = 'Johnny Depp') A, (SELECT * FROM ((stars INNER JOIN movies ON stars.movie_id = movies.id) INNER JOIN people ON stars.person_id = people.id) WHERE people.name = 'Helena Bonham Carter') B WHERE A.title = B.title;

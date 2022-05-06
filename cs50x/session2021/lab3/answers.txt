@@ -1,0 +1,16 @@
+sort1
+random50000     real    0m14.977s
+reversed50000   real    0m11.902s
+sorted50000     real    0m8.180s
+
+sort2
+random50000     real    0m2.411s
+reversed50000   real    0m2.324s
+sorted50000     real    0m2.222s
+
+sort3
+random50000     real    0m7.870s
+reversed50000   real    0m7.931s
+sorted50000     real    0m7.417s
+
+

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Deposit
+{% endblock %}
+
+{% block main %}
+    <form action="/deposit" method="post">
+        <div class="form-group">
+            <select class="form-control" name="quantity">
+                <option value="" selected disabled>Quantity</option>
+                <option value="500">$500.00</option>
+                <option value="1000">$1000.00</option>
+                <option value="2500">$2500.00</option>
+                <option value="5000">$5000.00</option>
+                <option value="7500">$7500.00</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Deposit</button>
+    </form>
+{% endblock %}

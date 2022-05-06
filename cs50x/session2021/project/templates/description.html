@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Course Description
+{% endblock %}
+
+{% block main %}
+    <h1>Course Description</h1>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Course</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Enrollment/Capacity</th>
+            <th scope="col">Section</th>
+            <th scope="col">Department</th>
+            <th scope="col">Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ courses.title }}</td>
+                <td>{{ courses.first_name }} {{ courses.last_name }}</td>
+                <td>{{ courses.enrollment }}/{{ courses.capacity }}</td>
+                <td>{{ courses.section }}</td>
+                <td>{{ courses.department }}</td>
+                <td>{{ courses.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input class="form-control" type="hidden" name="course_id" value="{{ courses.id }}"/>
+            <button class="btn btn-primary" type="submit">Register Course</button>
+        </div>
+    </form>
+    
+    <hr>
+    
+    <form action="/">
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Return to Schedule</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Course Drop Successful
+{% endblock %}
+
+{% block main %}
+    <h1>Course Drop Successful</h1>
+
+    <p><strong>{{ rows.first_name }} {{ rows.last_name }}</strong>, you have successfully dropped your course.</p>
+
+    <hr>
+    
+    <form action="/">
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Return to Schedule</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Confirm Course Drop
+{% endblock %}
+
+{% block main %}
+    <h1>Confirm Course Drop</h1>
+
+    <p><strong>{{ rows.first_name }} {{ rows.last_name }}</strong>, you are about to drop the <strong>Section {{ rows.section }}</strong> course <strong>{{ rows.title }}</strong>. Proceed?</p>
+
+    <form action="/dropped" method="post">
+        <div class="form-group">
+            <input class="form-control" type="hidden" name="course_id" value="{{ rows.id }}"/>
+            <button class="btn btn-primary" type="submit">Confirm</button>
+        </div>
+    </form>
+
+    <hr>
+    
+    <form action="/">
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Return to Schedule</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Playing Tennis</title>
+        <script>
+            function player()
+            {
+                let person = document.querySelector("#name").value;
+                if (person === "")
+                {
+                    person = "Rafael";
+                }
+                document.querySelector("#result").innerHTML = "The player " + person + " loves tennis!";
+            }
+        </script>
+        
+    </head>
+    <body>
+        <h1>The Sport of Tennis</h1>
+        
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="rules.html">Rules</a> |
+            <a href="scoring.html">Scoring</a> |
+            <a href="equipment.html">Equipment</a>
+        </nav>
+        
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Peer_Vs_Chakvetadze.JPG/317px-Peer_Vs_Chakvetadze.JPG" alt="Two tennis players on a court">
+        
+        <div class="alert alert-info" role="alert">
+            <em>Note:</em> Playing tennis is great exercise and fun!
+        </div>
+        
+        <h2 id="greenify">A Description of the Game of Tennis</h2>
+        
+        <ul>
+            <li>Tennis is a racket sport that can be played individually against a single opponent (singles) or between two teams of two players each (doubles).</li>
+            <li>Each player uses a tennis racket that is strung with cord to strike a hollow rubber ball covered with felt over or around a net and into the opponent's court.</li>
+            <li>The object of the game is to maneuver the ball in such a way that the opponent is not able to play a valid return. The player who is unable to return the ball will not gain a point, while the opposite player will.</li>
+        </ul>
+        
+        <p>Type your name in the field below:</p>
+        
+        <form onsubmit="player(); return false;">
+            <input type="text" id="name">
+            <input type="submit">
+        </form>
+        
+        <div id="result">
+            The player Roger loves tennis!
+        </div>
+        
+    </body>
+</html>

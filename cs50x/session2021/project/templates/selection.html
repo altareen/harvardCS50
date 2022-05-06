@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Select a Course
+{% endblock %}
+
+{% block main %}
+    <h1>Select a Course</h1>
+    <form action="/selection" method="post">
+        <div class="form-group">
+            <select class="form-select" name="course_id">
+                <option selected disabled>Select a course</option>
+                {% for course in courses %}
+                    <option value="{{ course.id }}">Section {{ course.section }}: {{ course.title }}(Instructor: {{ course.first_name }} {{ course.last_name }})</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" name="section_num" value="{{ sec_num }}"/>
+            <button class="btn btn-primary" type="submit">View Course Description</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <form action="/">
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Return to Schedule</button>
+        </div>
+    </form>
+{% endblock %}

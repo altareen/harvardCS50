@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', () =>
+            {
+                check_multiple_choice();
+                check_free_response();
+            });
+            
+            function check_multiple_choice()
+            {
+                document.querySelectorAll(".option").forEach(option =>
+                {
+                    option.onclick = () =>
+                    {
+                        clear_previous();
+                        if (option.textContent == "Helsinki")
+                        {
+                            option.style = "background-color:green";
+                            document.querySelector("#result").innerHTML = "<h4>Correct!</h4>";
+                        }
+                        else
+                        {
+                            option.style = "background-color:red";
+                            document.querySelector("#result").innerHTML = "<h4>Incorrect</h4>";
+                        }
+                    }
+                });
+            }
+            
+            function clear_previous()
+            {
+                document.querySelectorAll(".option").forEach(option =>
+                {
+                    option.style = "background-color:#d9edff";
+                });
+            }
+            
+            function check_free_response()
+            {
+                document.querySelector("#answer").onsubmit = () =>
+                {
+                    const country = document.querySelector("#nation").value;
+                    
+                    if (country == "Canada")
+                    {
+                        document.querySelector("#nation").style = "background-color:green";
+                        document.querySelector("#outcome").innerHTML = "<h4>Correct!</h4>";
+                        
+                    }
+                    else
+                    {
+                        document.querySelector("#nation").style = "background-color:red";
+                        document.querySelector("#outcome").innerHTML = "<h4>Incorrect</h4>";
+                    }
+                    
+                    return false;
+                };
+            }
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the capital city of Finland?</h3>
+                <button type="button" class="option">Oslo</button>
+                <button type="button" class="option">Stockholm</button>
+                <button type="button" class="option">Helsinki</button>
+                <button type="button" class="option">Copenhagen</button>
+                <div id="result"></div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- TODO: Add free response question here -->
+                <h3>In which country was ice hockey invented?</h3>
+                <form id="answer">
+                    <input id="nation">
+                    <input type="submit" value="Submit">
+                </form>
+                <div id="outcome"></div>
+            </div>
+
+        </div>
+    </body>
+</html>

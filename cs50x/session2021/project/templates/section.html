@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Select Section
+{% endblock %}
+
+{% block main %}
+    <h1>Browse Course Listings</h1>
+
+    <form action="/section" method="post">
+        <div class="form-group">
+            <select class="form-control" name="section_num">
+                <option selected disabled>Select a section</option>
+                {% for i in range(1,7) %}
+                    <option value="{{ i }}">Section {{ i }} Courses</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Select Section</button>
+        </div>
+    </form>
+    
+    <hr>
+    
+    <form action="/">
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Return to Schedule</button>
+        </div>
+    </form>
+{% endblock %}

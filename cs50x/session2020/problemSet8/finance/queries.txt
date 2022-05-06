@@ -1,0 +1,20 @@
+CREATE TABLE stocks (
+                user_id INTEGER NOT NULL,
+                symbol TEXT NOT NULL,
+                shares INTEGER NOT NULL,
+                price NUMERIC NOT NULL,
+                transacted INTEGER NOT NULL,
+                FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+SELECT datetime(transacted, 'unixepoch') FROM stocks;
+
+CREATE TABLE transactions (
+                user_id INTEGER NOT NULL,
+                symbol TEXT NOT NULL,
+                shares INTEGER NOT NULL,
+                price NUMERIC NOT NULL,
+                transacted INTEGER NOT NULL,
+                FOREIGN KEY(user_id) REFERENCES users(id)
+);
+

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Drop a Course
+{% endblock %}
+
+{% block main %}
+    <h1>Drop a Course</h1>
+
+    <form action="/confirm" method="post">
+        <div class="form-group">
+            <select class="form-control" name="course_id">
+                <option selected disabled>Select a course</option>
+                {% for course in rows %}
+                    <option value="{{ course.id }}">Section {{ course.section }}: {{ course.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Select Course</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Registration Successful
+{% endblock %}
+
+{% block main %}
+    <h1>Registration Successful</h1>
+
+    <p>Congratulations, <strong>{{ name.first_name }} {{ name.last_name }}</strong>, you have successfully registered for your course.</p>
+
+    <hr>
+    
+    <form action="/">
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Return to Schedule</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+#greenify
+{
+    color: green;
+}
+
+#ruleify
+{
+    background-color: black;
+    color: white;
+}
+
+#scoreify
+{
+    text-align: center;
+}
+
+#equipify
+{
+    font-family: serif;
+}
+
+#racketify
+{
+    text-shadow: 2px 2px 5px red;
+}
+
+#ballify
+{
+    text-shadow: 2px 2px 5px green;
+}
+
