@@ -1,0 +1,32 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    <hr>
+        {% for listing in listings %}
+            <h3>Listing: <a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h3>
+            
+            {% if listing.active %}
+                <img src="{{ listing.url }}" alt="product listing" style="width:200px;height:200px;">
+                <h2>Price: ${{ listing.bids.last.price }}</h2>
+
+                <ul>
+                    <li><strong>Bid history:</strong></li>
+                    {% for bid in listing.bids.all reversed %}
+                        <ul>
+                            <li>{{ bid.bidder }}: ${{ bid.price }}</li>
+                        </ul>    
+                    {% endfor %}
+                    <li><strong>Description:</strong> {{ listing.description }}</li>
+                    <li><strong>Listed by:</strong> {{ listing.creator }}</li>
+                    <li><strong>Category:</strong> {{ listing.category }}</li>
+                    <li><strong>Created:</strong> {{ listing.timestamp }}</li>
+                </ul>
+            {% else %}
+                <h2>This listing is closed.</h2>
+                <p>The winning bidder was: <strong>{{ listing.bids.last.bidder }}</strong></p>
+                <p>The final auction price was: <strong>${{ listing.bids.last.price }}</strong></p>
+            {% endif %}
+            <hr>
+        {% endfor %}
+{% endblock %}

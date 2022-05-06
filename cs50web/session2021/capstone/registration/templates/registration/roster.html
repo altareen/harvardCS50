@@ -1,0 +1,36 @@
+{% extends "registration/layout.html" %}
+
+{% block body %}
+    <h2>School Roster</h2>
+    <hr>
+    
+    <h3>Faculty</h3>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Name</th>
+        </thead>
+        <tbody>
+        {% for person in faculty %}
+            <tr>
+                <td><a href="{% url 'profile' person.id %}">{{ person.first_name }} {{ person.last_name }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <h3>Students</h3>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Name</th>
+        </thead>
+        <tbody>
+        {% for person in students %}
+            <tr>
+                <td><a href="{% url 'profile' person.id %}">{{ person.first_name }} {{ person.last_name }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}
+

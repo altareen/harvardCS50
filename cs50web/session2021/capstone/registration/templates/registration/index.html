@@ -1,0 +1,96 @@
+{% extends "registration/layout.html" %}
+
+{% block body %}
+    <h2>Course Listings</h2>
+    <hr>    
+
+    <h3>Mathematics</h3>
+        <table class="table table-striped">
+            <thead>
+                <th scope="col">Course</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Enrollment/Capacity</th>
+                <th scope="col">Section</th>
+                <th scope="col">Department</th>
+            </thead>
+            <tbody>
+            {% for course in math_courses %}
+                <tr>
+                    <td><a href="{% url 'details' course.id %}">{{ course.title }}</a></td>
+                    <td>{{ course.instructor.first_name }} {{ course.instructor.last_name }}</td>
+                    <td>{{ course.students.count }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+    <h3>Science</h3>
+        <table class="table table-striped">
+            <thead>
+                <th scope="col">Course</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Enrollment/Capacity</th>
+                <th scope="col">Section</th>
+                <th scope="col">Department</th>
+            </thead>
+            <tbody>
+            {% for course in science_courses %}
+                <tr>
+                    <td><a href="{% url 'details' course.id %}">{{ course.title }}</a></td>
+                    <td>{{ course.instructor.first_name }} {{ course.instructor.last_name }}</td>
+                    <td>{{ course.students.count }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    <h3>Humanities</h3>
+        <table class="table table-striped">
+            <thead>
+                <th scope="col">Course</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Enrollment/Capacity</th>
+                <th scope="col">Section</th>
+                <th scope="col">Department</th>
+            </thead>
+            <tbody>
+            {% for course in humanities_courses %}
+                <tr>
+                    <td><a href="{% url 'details' course.id %}">{{ course.title }}</a></td>
+                    <td>{{ course.instructor.first_name }} {{ course.instructor.last_name }}</td>
+                    <td>{{ course.students.count }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    <h3>Languages</h3>
+        <table class="table table-striped">
+            <thead>
+                <th scope="col">Course</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Enrollment/Capacity</th>
+                <th scope="col">Section</th>
+                <th scope="col">Department</th>
+            </thead>
+            <tbody>
+            {% for course in languages_courses %}
+                <tr>
+                    <td><a href="{% url 'details' course.id %}">{{ course.title }}</a></td>
+                    <td>{{ course.instructor.first_name }} {{ course.instructor.last_name }}</td>
+                    <td>{{ course.students.count }}/{{ course.capacity }}</td>
+                    <td>{{ course.section }}</td>
+                    <td>{{ course.department.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+{% endblock %}
+

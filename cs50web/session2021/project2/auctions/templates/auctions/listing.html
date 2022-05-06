@@ -1,0 +1,107 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Listing: {{ listing.title }}</h2>
+
+    {% if listing.active %}
+
+        <form action="{% url 'success' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input autofocus class="form-control" type="hidden" name="listing_id" value="{{ listing.id }}">
+            </div>
+            {% if user in watchlist %}
+                <input class="btn btn-primary" type="submit" value="Remove from Watchlist">
+            {% else %}
+                <input class="btn btn-primary" type="submit" value="Add to Watchlist">
+            {% endif %}
+        </form>
+
+        {% if listing.creator == user %}
+            <form action="{% url 'close' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input autofocus class="form-control" type="hidden" name="listing_id" value="{{ listing.id }}">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Close this Listing">
+            </form>
+        {% endif %}
+
+        <img src="{{ listing.url }}" alt="product listing" style="width:200px;height:200px;">
+
+        <p><strong>Description:</strong> {{ listing.description }}</p>
+
+        <h2>Price: ${{ bids.last.price }}</h2>
+
+        <p><strong>Bid history:</strong></p>
+        <ul>
+        {% for bid in bids reversed %}
+            <li>{{ bid.bidder }}: ${{ bid.price }}</li>
+        {% endfor %}
+        </ul>
+
+        <p>{{ bids.count }} bid(s) so far.
+        {% if bids.last.bidder == user %}
+            Your
+        {% else %}
+            {{ bids.last.bidder }}'s
+        {% endif %}
+        bid is the current bid.</p>
+        
+        <form action="{% url 'listing' listing.id %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input autofocus class="form-control" type="number" name="current_bid" min="{{ bids.last.price }}" placeholder="Bid">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Place Bid">
+        </form>
+
+        <h2>Details</h2>
+        <ul>
+            <li><strong>Listed by:</strong> {{ listing.creator }}</li>
+            <li><strong>Category:</strong> {{ listing.category }}</li>
+            <li><strong>Created:</strong> {{ listing.timestamp }}</li>
+        </ul>
+
+        <h2>Comments</h2>
+
+        <form action="{% url 'comment' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input autofocus class="form-control" type="hidden" name="listing_id" value="{{ listing.id }}">
+            </div>
+            <div class="form-group">
+                <input autofocus class="form-control" type="text" name="listing_comment" width="80" placeholder="Enter Comment">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Post Comment">
+        </form>
+
+        <h5>Previous posts:</h5>
+
+        {% for comment in comments %}
+        <ul>
+            <li><strong>{{ comment.author }}:</strong> {{ comment.content }}</li>
+        </ul>
+        {% empty %}
+            <p>No comments have been posted yet.<p>
+        {% endfor %}
+
+    {% else %}
+        <h2>This listing is closed.</h2>
+        <p>The winning bidder was: <strong>{{ bids.last.bidder }}</strong></p>
+        <p>The final auction price was: <strong>${{ bids.last.price }}</strong></p>
+        
+        {% if listing.creator == user %}
+            <form action="{% url 'reactivate' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input autofocus class="form-control" type="hidden" name="listing_id" value="{{ listing.id }}">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Reactivate this Listing">
+            </form>
+        {% endif %}
+        
+        <a href="{% url 'index' %}">Return to the Active Listings</a>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Reactivate Listing</h2>
+    
+        <p>Congratulations, you have successfully <strong>reactivated</strong> the following auction listing: <strong>{{ listing.title }}</strong></p>
+
+    <a href="{% url 'listing' listing.id %}">Return to the {{ listing.title }} listing</a>
+{% endblock %}

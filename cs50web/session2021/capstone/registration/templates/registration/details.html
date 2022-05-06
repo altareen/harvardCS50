@@ -1,0 +1,66 @@
+{% extends "registration/layout.html" %}
+{% load static %}
+
+{% block body %}
+    {% if user == course.instructor %}
+        <h2><span id="title_{{ course.id }}">{{ course.title }}</span>
+        <button class="btn btn-sm btn-outline-primary" id="edit_title_{{ course.id }}" onclick="edit_title({{ course.id }})">Edit</button></h2>
+    {% else %}
+        <h2>{{ course.title }}</h2>
+    {% endif %}
+    <hr>
+    
+    <ul>
+        {% if user == course.instructor %}
+            <!-- <li><strong>Instructor:</strong> <a id="anchor" href="{% url 'profile' course.instructor.id %}"><span id="name_{{ course.id }}">{{ course.instructor.first_name }} {{ course.instructor.last_name }}</span></a> -->
+            <li><strong>Instructor:</strong> <span id="name_{{ course.id }}">{{ course.instructor.first_name }} {{ course.instructor.last_name }}</span>
+            <button class="btn btn-sm btn-outline-primary" id="edit_name_{{ course.id }}" onclick="edit_name({{ course.id }})">Edit</button></li>
+        {% else %}
+            <li><strong>Instructor:</strong> <a href="{% url 'profile' course.instructor.id %}">{{ course.instructor.first_name }} {{ course.instructor.last_name }}</a></li>
+        {% endif %}
+        {% if user == course.instructor %}
+            <li><strong>Enrollment/Capacity:</strong> <span id="quantity">{{ course.students.count }}</span>/<span id="capacity_{{ course.id }}">{{ course.capacity }}</span>
+            <button class="btn btn-sm btn-outline-primary" id="edit_capacity_{{ course.id }}" onclick="edit_capacity({{ course.id }})">Edit</button></li>
+        {% else %}
+            <li><strong>Enrollment/Capacity:</strong> {{ course.students.count }}/{{ course.capacity }}</li>
+        {% endif %}
+        {% if user == course.instructor %}
+            <li><strong>Section:</strong> <span id="section_{{ course.id }}">{{ course.section }}</span>
+            <button class="btn btn-sm btn-outline-primary" id="edit_section_{{ course.id }}" onclick="edit_section({{ course.id }})">Edit</button></li>
+        {% else %}
+            <li><strong>Section:</strong> {{ course.section }}</li>
+        {% endif %}
+        {% if user == course.instructor %}
+            <li><strong>Department:</strong> <span id="department_{{ course.id }}">{{ course.department.name }}</span>
+            <button class="btn btn-sm btn-outline-primary" id="edit_department_{{ course.id }}" onclick="edit_department({{ course.id }})">Edit</button></li>
+        {% else %}
+            <li><strong>Department:</strong> {{ course.department.name }}</li>
+        {% endif %}
+        {% if course.students.count == course.capacity %}
+            <li><strong>Registration status:</strong> CLOSED(capacity reached)</li>
+        {% else %}
+            <li><strong>Registration status:</strong> OPEN</li>
+        {% endif %}
+    </ul>
+    
+    <h3>Description</h3>
+    {% if user == course.instructor %}    
+        <p><span id ="description_{{ course.id }}">{{ course.description }}</span>
+        <button class="btn btn-sm btn-outline-primary" id="edit_description_{{ course.id }}" onclick="edit_description({{ course.id }})">Edit</button></p>
+    {% else %}  
+        <p>{{ course.description }}</p>
+    {% endif %}
+    
+    <h3>Course Roster</h3>
+    <ul>
+    {% for student in course.students.all %}
+        <li><a href="{% url 'profile' student.id %}">{{ student.first_name }} {{ student.last_name }}</a></li>
+    {% empty %}
+        <p>No students are enrolled in this course.<p>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'registration/frontend.js' %}"></script>
+{% endblock %}

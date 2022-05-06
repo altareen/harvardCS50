@@ -1,0 +1,20 @@
+{% extends "registration/layout.html" %}
+
+{% block body %}
+    <h2>Select a Section {{ section }} Course:</h2>
+    
+    <form action="{% url 'select' %}" method="post">
+        {% csrf_token %}
+            <select class="form-select" name="course_id">
+                <option selected disabled>Select course:</option>
+                {% for course in courses %}
+                    {% if course.students.count < course.capacity %}
+                        <option value="{{ course.id }}">{{ course.title }}: {{ course.students.count }}/{{ course.capacity }} Enrolled</option>
+                    {% else %}
+                        <option disabled value="{{ course.id }}">{{ course.title }}: {{ course.students.count }}/{{ course.capacity }} Enrolled(Course closed, capacity reached)</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        <input type="submit">
+    </form>
+{% endblock %}

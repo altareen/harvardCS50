@@ -1,0 +1,18 @@
+{% extends "registration/layout.html" %}
+
+{% block body %}
+    <h2>Select a Course:</h2>
+    
+    <form action="{% url 'drop' %}" method="post">
+        {% csrf_token %}
+            <select class="form-select" name="course_id">
+                <option selected disabled>Select course:</option>
+                {% for course in courses %}
+                    <option value="{{ course.id }}">{{ course.title }}(Section {{ course.section }}): {{ course.students.count }}/{{ course.capacity }} Enrolled</option>
+                {% empty %}
+                    <option disabled>Student is not enrolled in any courses.</option>
+                {% endfor %}
+            </select>
+        <input type="submit">
+    </form>
+{% endblock %}

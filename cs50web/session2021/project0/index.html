@@ -1,0 +1,44 @@
+<!--
+|-------------------------------------------------------------------------------
+| index.html
+|-------------------------------------------------------------------------------
+|
+| Author:       Alwin Tareen
+| Created:      Mar 29, 2021
+| Execution:    xdg-open index.html
+|
+| This program implements a Google Search application.
+|
+| Submission instructions:
+| Move inside the folder that contains your project code and execute:
+|
+| git init
+| git remote add origin https://github.com/me50/altareen.git
+| git add -A
+| git commit -m "Submit my project 0"
+| git push origin main:web50/projects/2020/x/search
+|
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Google Search</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="navigation">
+            <a href="image.html">Image Search</a>
+            <a href="advanced.html">Advanced Search</a>
+        </div>
+        
+        <div id="main">
+            <form action="https://google.com/search">
+                <input type="text" name="q">
+                <br/>
+                <input type="submit" name="btnK" value="Google Search">
+                <input type="submit" name="btnI" value="I'm Feeling Lucky">
+            </form>
+        </div>
+    </body>
+</html>

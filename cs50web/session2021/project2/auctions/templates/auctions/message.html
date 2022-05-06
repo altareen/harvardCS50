@@ -1,0 +1,9 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Message</h2>
+
+    <p>{{ content }}</p>
+    
+    <a href="{% url 'index' %}">Return to the Active Listings</a>
+{% endblock %}

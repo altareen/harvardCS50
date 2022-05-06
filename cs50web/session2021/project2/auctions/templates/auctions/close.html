@@ -1,0 +1,11 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Close Listing</h2>
+    
+        <p>Congratulations, you have successfully <strong>closed</strong> the following auction listing: <strong>{{ listing.title }}</strong></p>
+        <p>The winning bidder was: <strong>{{ bids.last.bidder }}</strong></p>
+        <p>The final auction price was: <strong>${{ bids.last.price }}</strong></p>
+
+    <a href="{% url 'listing' listing.id %}">Return to the {{ listing.title }} listing</a>
+{% endblock %}

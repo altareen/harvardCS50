@@ -1,0 +1,43 @@
+{% extends "registration/layout.html" %}
+
+{% block body %}
+    <h2>{{ person.first_name }} {{ person.last_name }}</h2>
+    <hr>
+    
+    {% if person.is_staff %}
+        <h3>Designated Instructor for these Courses:</h3>
+    {% else %}
+        <h3>Enrolled in these Courses:</h3>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Course</th>
+            <th scope="col">Enrollment/Capacity</th>
+            <th scope="col">Section</th>
+            <th scope="col">Department</th>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+            <tr>
+                <td><a href="{% url 'details' course.id %}">{{ course.title }}</a></td>
+                <td>{{ course.students.count }}/{{ course.capacity }}</td>
+                <td>{{ course.section }}</td>
+                <td>{{ course.department.name }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                {% if person.is_staff %}
+                    <td>This instructor is not teaching any courses.</td>
+                {% else %}
+                    <td>This student is not enrolled in any courses.</td>
+                {% endif %}
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+
+{% endblock %}    

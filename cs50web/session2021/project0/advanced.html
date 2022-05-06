@@ -1,0 +1,44 @@
+<!--
+|-------------------------------------------------------------------------------
+| advanced.html
+|-------------------------------------------------------------------------------
+|
+| Author:       Alwin Tareen
+| Created:      Mar 29, 2021
+| Execution:    xdg-open advanced.html
+|
+| This program implements a Google Search application.
+|
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Search</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="navigation">
+            <a href="index.html">Google Search</a>
+        </div>
+        
+        <div id="adv_main">
+        <h2>Find pages with...</h2>
+            <form action="https://google.com/search" name="f">
+                all these words:
+                <input type="text" name="as_q">
+                <br/>
+                this exact word or phrase:
+                <input type="text" name="as_epq">
+                <br/>
+                any of these words:
+                <input type="text" name="as_oq">
+                <br/>
+                none of these words:
+                <input type="text" name="as_eq">
+                <br/>
+                <input id="confirm" type="submit" value="Advanced Search">
+            </form>
+        </div>
+    </body>
+</html>

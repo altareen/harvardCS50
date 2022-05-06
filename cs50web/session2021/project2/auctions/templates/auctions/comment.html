@@ -1,0 +1,10 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Post Comment</h2>
+    
+        <p>Congratulations, you have successfully <strong>posted</strong> the following comment on the auction listing: <strong>{{ listing.title }}</strong></p>
+        <p>{{ comments.last.content }}</p>
+
+    <a href="{% url 'listing' listing.id %}">Return to the {{ listing.title }} listing</a>
+{% endblock %}

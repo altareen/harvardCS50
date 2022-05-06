@@ -1,0 +1,23 @@
+#navigation {
+    text-align: right;
+}
+
+#main {
+    text-align: center;
+}
+
+#adv_main {
+    text-align: left;
+}
+
+input[type=text] {
+    border-radius: 10px;
+}
+
+#confirm {
+    background-color: blue;
+    color: white;
+}
+
+
+

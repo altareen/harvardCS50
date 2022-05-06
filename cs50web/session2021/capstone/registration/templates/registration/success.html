@@ -1,0 +1,17 @@
+{% extends "registration/layout.html" %}
+
+{% block body %}
+    <h2>Success</h2>
+    
+    {% if user.is_staff %}
+        <p><strong>{{ instructor.first_name }} {{ instructor.last_name }}</strong>, you have successfully <strong>{{ action }}</strong> the course: <strong>{{ course.title }}</strong></p>
+    {% else %}
+        <p><strong>{{ student.first_name }} {{ student.last_name }}</strong>, you have successfully <strong>{{ action }}</strong> the course: <strong>{{ course.title }}</strong></p>
+    {% endif %}
+
+    <form action="/">
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Return to Course Listings</button>
+        </div>
+    </form>
+{% endblock %}
